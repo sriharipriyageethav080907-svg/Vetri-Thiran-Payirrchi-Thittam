@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}
+PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+  <div>
+
+    <p class="eyebrow">
+      SMART PLANNING • BUDGET FIRST
+    </p>
+
+    <h1>
+      Plan smarter.
+      Spend with confidence.
+    </h1>
+
+    <p class="lead">
+
+      PocketSmart AI turns your budget
+      and preferences into practical
+      plans for home interiors,
+      parties and jewelry.
+
+    </p>
+
+    <div class="actions">
+
+      <a
+        class="btn primary"
+        href="/register"
+      >
+        Get Started
+      </a>
+
+      <a
+        class="btn"
+        href="/login"
+      >
+        Sign In
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="hero-card">
+
+    <div class="spark">
+      ✦
+    </div>
+
+    <h3>
+      One budget. One clear plan.
+    </h3>
+
+    <p>
+
+      Use Gemini when configured,
+      or the built-in fallback planner
+      when you want the app to run
+      without an AI key.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="grid three">
+
+  <a
+    class="feature"
+    href="/planner/home"
+  >
+
+    <span>🏠</span>
+
+    <h3>
+      Home Interior
+    </h3>
+
+    <p>
+      Rooms, furniture, lighting
+      and decor within a total budget.
+    </p>
+
+  </a>
+
+
+  <a
+    class="feature"
+    href="/planner/party"
+  >
+
+    <span>🎉</span>
+
+    <h3>
+      Party Planner
+    </h3>
+
+    <p>
+      Allocate spending across
+      food, venue, decoration
+      and entertainment.
+    </p>
+
+  </a>
+
+
+  <a
+    class="feature"
+    href="/planner/jewelry"
+  >
+
+    <span>💎</span>
+
+    <h3>
+      Jewelry Planner
+    </h3>
+
+    <p>
+      Plan occasion-ready jewelry
+      with an optional outfit image.
+    </p>
+
+  </a>
+
+</section>
+
+{% endblock %}

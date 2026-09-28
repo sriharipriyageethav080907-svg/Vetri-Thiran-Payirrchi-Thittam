@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ planner|title }} Planner · PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-head">
+
+  <p class="eyebrow">
+    POCKETSMART AI PLANNER
+  </p>
+
+  <h1>
+    {{ planner|title }} Planner
+  </h1>
+
+  <p>
+    Enter your constraints.
+    Recommendations are estimates,
+    not live inventory or price verification.
+  </p>
+
+</section>
+
+
+<section class="planner-layout">
+
+
+<form
+  id="plannerForm"
+  class="panel form"
+  data-planner="{{ planner }}"
+  enctype="multipart/form-data"
+>
+
+
+{% if planner == "home" %}
+
+
+<label>
+
+  Total budget
+
+  <input
+    name="budget"
+    type="number"
+    min="1"
+    step="100"
+    required
+    placeholder="100000"
+  >
+
+</label>
+
+
+<label>
+
+  Currency
+
+  <input
+    name="currency"
+    value="INR"
+  >
+
+</label>
+
+
+<label>
+
+  Rooms
+
+  <input
+    name="rooms"
+    value="Living Room, Bedroom"
+  >
+
+</label>
+
+
+<label>
+
+  Items
+
+  <input
+    name="items"
+    value="LED ceiling light:2, Side table:1, Sofa:1"
+  >
+
+</label>
+
+
+<label>
+
+  Style
+
+  <select name="style">
+
+    <option>
+      Modern
+    </option>
+
+    <option>
+      Minimal
+    </option>
+
+    <option>
+      Traditional
+    </option>
+
+    <option>
+      Luxury
+    </option>
+
+  </select>
+
+</label>
+
+
+<label>
+
+  Priorities
+
+  <textarea name="priorities">
+Value for money, durability
+  </textarea>
+
+</label>
+
+
+<label>
+
+  Preferred platforms
+
+  <input
+    name="preferred_platforms"
+    value="Amazon, IKEA"
+  >
+
+</label>
+
+
+{% elif planner == "party" %}
+
+
+<label>
+
+  Total budget
+
+  <input
+    name="budget"
+    type="number"
+    min="1"
+    step="100"
+    required
+    placeholder="50000"
+  >
+
+</label>
+
+
+<label>
+
+  Currency
+
+  <input
+    name="currency"
+    value="INR"
+  >
+
+</label>
+
+
+<label>
+
+  Event type
+
+  <select name="event_type">
+
+    <option>
+      Birthday
+    </option>
+
+    <option>
+      Wedding
+    </option>
+
+    <option>
+      Corporate
+    </option>
+
+    <option>
+      Anniversary
+    </option>
+
+    <option>
+      House Party
+    </option>
+
+  </select>
+
+</label>
+
+
+<label>
+
+  Guests
+
+  <input
+    name="guests"
+    type="number"
+    min="1"
+    required
+    value="30"
+  >
+
+</label>
+
+
+<label>
+
+  Venue
+
+  <input
+    name="venue"
+    value="Home"
+  >
+
+</label>
+
+
+<label>
+
+  City
+
+  <input
+    name="city"
+    placeholder="Chennai"
+  >
+
+</label>
+
+
+<label>
+
+  Food preferences
+
+  <textarea name="food_preferences">
+Vegetarian, South Indian
+  </textarea>
+
+</label>
+
+
+<label>
+
+  Priorities
+
+  <textarea name="priorities">
+Good food and simple elegant decoration
+  </textarea>
+
+</label>
+
+
+{% else %}
+
+
+<label>
+
+  Total budget
+
+  <input
+    name="budget"
+    type="number"
+    min="1"
+    step="100"
+    required
+    placeholder="25000"
+  >
+
+</label>
+
+
+<label>
+
+  Currency
+
+  <input
+    name="currency"
+    value="INR"
+  >
+
+</label>
+
+
+<label>
+
+  Occasion
+
+  <select name="occasion">
+
+    <option>
+      Wedding
+    </option>
+
+    <option>
+      Reception
+    </option>
+
+    <option>
+      Birthday
+    </option>
+
+    <option>
+      Festival
+    </option>
+
+    <option>
+      Office Event
+    </option>
+
+  </select>
+
+</label>
+
+
+<label>
+
+  Style
+
+  <select name="style">
+
+    <option>
+      Elegant
+    </option>
+
+    <option>
+      Minimal
+    </option>
+
+    <option>
+      Traditional
+    </option>
+
+    <option>
+      Contemporary
+    </option>
+
+  </select>
+
+</label>
+
+
+<label>
+
+  Metal
+
+  <select name="metal">
+
+    <option>
+      Any
+    </option>
+
+    <option>
+      Gold
+    </option>
+
+    <option>
+      Silver
+    </option>
+
+    <option>
+      Rose Gold
+    </option>
+
+  </select>
+
+</label>
+
+
+<label>
+
+  Outfit color
+
+  <input
+    name="outfit_color"
+    placeholder="Navy blue"
+  >
+
+</label>
+
+
+<label>
+
+  Notes
+
+  <textarea
+    name="notes"
+    placeholder="Prefer lightweight pieces..."
+  ></textarea>
+
+</label>
+
+
+<label>
+
+  Optional outfit image
+
+  <input
+    name="outfit_image"
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+  >
+
+</label>
+
+
+{% endif %}
+
+
+<button
+  class="btn primary"
+  type="submit"
+>
+  Generate plan
+</button>
+
+
+<p
+  id="formMessage"
+  class="message"
+></p>
+
+
+</form>
+
+
+<section
+  id="results"
+  class="panel results"
+>
+
+  <div class="empty">
+
+    <span>✦</span>
+
+    <h2>
+      Your plan will appear here
+    </h2>
+
+    <p>
+      Submit the form to generate recommendations.
+    </p>
+
+  </div>
+
+</section>
+
+
+</section>
+
+{% endblock %}
